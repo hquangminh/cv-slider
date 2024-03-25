@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Silder Đối Tác</title>
+  </head>
+  <body>
+    <div class="carousel">
+      <div class="carousel__track-container">
+        <div id="carouselContainer" class="carousel-container">
+          <ul id="carouselList" class="carousel__list">
+            <li class="carousel__slide">
+              <img class="carousel__image" src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/cua-nhom-maxpro.png" alt="Cửa nhôm maxpro" />
+              <div class="carousel__title">Cửa nhôm maxpro</div>
+            </li>
+            <li class="carousel__slide">
+              <img
+                class="carousel__image"
+                src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/cua-nhom-xingfa.webp"
+                alt="Cửa nhôm xingfa"
+              />
+              <div class="carousel__title">Cửa nhôm xingfa</div>
+            </li>
+            <li class="carousel__slide">
+              <img class="carousel__image" src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/cua-nhom-civro.png" alt="Cửa nhôm civro" />
+              <div class="carousel__title">Cửa nhôm civro</div>
+            </li>
+            <li class="carousel__slide">
+              <img class="carousel__image" src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/cua-nhom-kogen.png" alt="Cửa nhôm kogen" />
+              <div class="carousel__title">Cửa nhôm kogen</div>
+            </li>
+            <li class="carousel__slide">
+              <img class="carousel__image" src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/cua-nhom-roto.png" alt="Cửa nhôm roto" />
+
+              <div class="carousel__title">Cửa nhôm roto</div>
+            </li>
+            <li class="carousel__slide">
+              <img class="carousel__image" src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/phu-kien-cmech.png" alt="Phụ kiện cmech" />
+
+              <div class="carousel__title">Phụ kiện cmech</div>
+            </li>
+            <li class="carousel__slide">
+              <img
+                class="carousel__image"
+                src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/phu-kien-kinlong.jpg"
+                alt="Phụ kiện kin long"
+              />
+              <div class="carousel__title">Phụ Kiện Kin Long</div>
+            </li>
+            <li class="carousel__slide">
+              <img class="carousel__image" src="https://phuongtrangwindow.com/wp-content/uploads/2024/03/phu-kien-draho-1.png" alt="Phụ kiện Draho" />
+              <div class="carousel__title">Phụ kiện Draho</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button id="prevButton" class="carousel__button carousel__button--left"><</button>
+      <button id="nextButton" class="carousel__button carousel__button--right">></button>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const track = document.getElementById('carouselList')
+          const slides = Array.from(track.children)
+          const nextButton = document.getElementById('nextButton')
+          const prevButton = document.getElementById('prevButton')
+
+          let currentIndex = 0
+          let slidesToShow = 4
+          let slideWidth
+
+          function setSlideWidth() {
+            const trackWidth = document.querySelector('.carousel__track-container').offsetWidth
+            slideWidth = trackWidth / slidesToShow
+            slides.forEach((slide) => {
+              slide.style.width = `${slideWidth}px`
+            })
+            moveToSlide()
+          }
+
+          function updateButtons() {
+            prevButton.style.display = currentIndex > 0 ? 'block' : 'none'
+            nextButton.style.display = currentIndex + slidesToShow < slides.length ? 'block' : 'none'
+          }
+
+          function moveToSlide() {
+            const moveDistance = currentIndex * slideWidth
+            track.style.transform = `translateX(-${moveDistance}px)`
+            updateButtons()
+          }
+
+          nextButton.addEventListener('click', (e) => {
+            if (currentIndex + slidesToShow < slides.length) {
+              currentIndex += slidesToShow
+              moveToSlide()
+            }
+          })
+
+          prevButton.addEventListener('click', (e) => {
+            if (currentIndex > 0) {
+              currentIndex -= slidesToShow
+              moveToSlide()
+            }
+          })
+
+          setSlideWidth()
+          window.addEventListener('resize', setSlideWidth)
+        })
+      </script>
+    </div>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Layout 2 Cột</title>
+        <style>
+          /* Định nghĩa style cho thẻ body */
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          /* Container chứa 2 cột */
+          .container {
+            display: flex;
+            flex-wrap: wrap;
+          }
+
+          /* Định nghĩa style cho cột */
+          .column {
+            flex: 50%; /* Mỗi cột chiếm 50% chiều rộng của container */
+            padding: 20px; /* Khoảng cách giữa nội dung và viền cột */
+          }
+
+          /* Style cho cột đầu tiên */
+          .column:first-child {
+            background-color: #f2f2f2; /* Màu nền cho cột đầu tiên */
+          }
+
+          /* Style cho cột thứ hai */
+          .column:last-child {
+            background-color: #ddd; /* Màu nền cho cột thứ hai */
+          }
+
+          /* Responsive layout trên các thiết bị có chiều rộng nhỏ hơn 600px */
+          @media (max-width: 600px) {
+            .column {
+              flex: 100%; /* Mỗi cột chiếm toàn bộ chiều rộng container */
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="column">
+            <h2>Cột 1</h2>
+            <p>Nội dung cột 1. Đây là ví dụ về cách tạo layout 2 cột sử dụng HTML và CSS.</p>
+          </div>
+          <div class="column">
+            <h2>Cột 2</h2>
+            <p>Nội dung cột 2. Bạn có thể thêm nội dung, hình ảnh, hoặc các thành phần khác vào đây.</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  </body>
+</html>

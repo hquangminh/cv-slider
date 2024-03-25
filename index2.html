@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout 2 Ảnh</title>
+    <style>
+      .container_gthieu {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 30%;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+
+      .column_gthieu {
+        width: 48%;
+        padding: 20px;
+        margin-right: 20px;
+      }
+      .image_gioithieu {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      @media (max-width: 600px) {
+        .container_gthieu {
+          width: 100%;
+        }
+
+        .column_gthieu {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container_gthieu">
+      <div class="column_gthieu">
+        <img class="image_gioithieu" src="./public/logo-civro.png" alt="Girl in a jacket" />
+      </div>
+
+      <div class="column_gthieu">
+        <img class="image_gioithieu" src="./public/logo-civro.png" alt="Girl in a jacket" />
+      </div>
+    </div>
+  </body>
+</html>
